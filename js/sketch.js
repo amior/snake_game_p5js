@@ -20,4 +20,4 @@ function draw() {
 		snake.extend(food.x, food.y);
 		food = new Food(floor(random(0,width/gridSize))*gridSize, floor(random(0,height/gridSize))*gridSize);
 	}
-}
+}	

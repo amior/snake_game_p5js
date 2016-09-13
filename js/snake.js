@@ -2,6 +2,7 @@ function Snake(x,y) {
 	this.x = x;
 	this.y = y;
 	this.direction; //holds value of the current direction
+	this.moving = true;
 
 	this.display = function () {
 		fill(255);
@@ -11,7 +12,7 @@ function Snake(x,y) {
 	}
 
 	this.move = function () {
-		if(this.direction != "None") {
+		if(this.moving) {
 			for (var i = snakePieces.length-1; i > 0; i--) {
 				snakePieces[i].x = snakePieces[i-1].x;
 				snakePieces[i].y = snakePieces[i-1].y;
@@ -26,6 +27,7 @@ function Snake(x,y) {
 			else {
 				this.x = this.x + gridSize;
 			}
+			this.moving = true;
 		}
 		else if(keyCode == RIGHT_ARROW) {
 			if(this.direction!="left") {
@@ -35,6 +37,7 @@ function Snake(x,y) {
 			else {
 				this.x = this.x -gridSize;
 			}
+			this.moving = true;
 		}
 		else if(keyCode == UP_ARROW) {
 			if(this.direction!="down") {
@@ -44,6 +47,7 @@ function Snake(x,y) {
 			else {
 				this.y = this.y + gridSize;
 			}
+			this.moving = true;
 		}
 		else if(keyCode == DOWN_ARROW) {
 			if(this.direction!="up") {
@@ -53,9 +57,10 @@ function Snake(x,y) {
 			else {
 				this.y = this.y - gridSize;
 			}
+			this.moving = true;
 		}
 		else {
-			this.direction = "None";
+			this.moving = false;
 		}
 	}
 
