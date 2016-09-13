@@ -27,7 +27,6 @@ function Snake(x,y) {
 			else {
 				this.x = this.x + gridSize;
 			}
-			this.moving = true;
 		}
 		else if(keyCode == RIGHT_ARROW) {
 			if(this.direction!="left") {
@@ -37,7 +36,6 @@ function Snake(x,y) {
 			else {
 				this.x = this.x -gridSize;
 			}
-			this.moving = true;
 		}
 		else if(keyCode == UP_ARROW) {
 			if(this.direction!="down") {
@@ -47,7 +45,6 @@ function Snake(x,y) {
 			else {
 				this.y = this.y + gridSize;
 			}
-			this.moving = true;
 		}
 		else if(keyCode == DOWN_ARROW) {
 			if(this.direction!="up") {
@@ -57,10 +54,20 @@ function Snake(x,y) {
 			else {
 				this.y = this.y - gridSize;
 			}
-			this.moving = true;
 		}
 		else {
-			this.moving = false;
+			if(this.direction=="left") {
+				this.x = this.x - gridSize;
+			}
+			else if(this.direction=="right") {
+				this.x = this.x + gridSize;
+			}
+			else if(this.direction=="up") {
+				this.y = this.y - gridSize;
+			}
+			else if(this.direction=="down") {
+				this.y = this.y + gridSize;
+			}
 		}
 	}
 

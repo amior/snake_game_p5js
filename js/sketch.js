@@ -20,4 +20,17 @@ function draw() {
 		snake.extend(food.x, food.y);
 		food = new Food(floor(random(0,width/gridSize))*gridSize, floor(random(0,height/gridSize))*gridSize);
 	}
-}	
+
+	if(snake.x<0 || snake.x>width || snake.y<0 || snake.y>height) {
+		snake.moving = false;
+		Object.freeze(snake);
+	}
+
+	for(var i=1; i<snakePieces.length; i++) {
+		if(snake.x==snakePieces[i].x && snake.y==snakePieces[i].y) {
+			snake.moving = false;
+			Object.freeze(snake);
+			break;
+		}
+	}
+}
