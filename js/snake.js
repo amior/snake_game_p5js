@@ -5,10 +5,19 @@ function Snake(x,y) {
 
 	this.display = function () {
 		fill(255);
-		rect(this.x, this.y, gridSize, gridSize); 
+		for(var i=0; i<snakePieces.length; i++) {
+			rect(snakePieces[i].x, snakePieces[i].y, gridSize, gridSize);
+		}
 	}
 
 	this.move = function () {
+		if(this.direction != "None") {
+			for (var i = snakePieces.length-1; i > 0; i--) {
+				snakePieces[i].x = snakePieces[i-1].x;
+				snakePieces[i].y = snakePieces[i-1].y;
+			}
+		}
+
 		if(keyCode == LEFT_ARROW) {
 			if(this.direction!="right") {
 				this.x = this.x - gridSize;
@@ -45,5 +54,25 @@ function Snake(x,y) {
 				this.y = this.y - gridSize;
 			}
 		}
+		else {
+			this.direction = "None";
+		}
+	}
+
+	this.extend = function(x, y) {
+		if(this.direction=="left") {
+			newPiece = new Piece(x+gridSize, y);
+		}
+		else if(this.direction=="right") {
+			newPiece = new Piece(x-gridSize, y);
+		}
+		else if(this.direction=="up") {
+			newPiece = new Piece(x, y+gridSize);
+		}
+		else if(this.direction=="down") {
+			newPiece = new Piece(x, y-gridSize);
+		}
+		
+		snakePieces.push(newPiece);
 	}
 }
