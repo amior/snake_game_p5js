@@ -31,7 +31,7 @@ function draw() {
 	}
 
 	//Check if the head hits the wall
-	if(snake.x<0 || snake.x>width || snake.y<0 || snake.y>height) {
+	if(snake.x<0 || snake.x==width || snake.y<0 || snake.y==height) {
 		gameOver();
 	}
 
