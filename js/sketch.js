@@ -4,8 +4,8 @@ var snake;
 var snakePieces = [];    //List to store all snake pieces
 
 function setup() {
-	createCanvas(600, 400);
-	frameRate(15);
+	createCanvas(400, 300);
+	frameRate(20);
 	
 	snake = new Snake(floor(random(0,width/gridSize))*gridSize, floor(random(0,height/gridSize))*gridSize);
 	snakePieces.push(snake);
